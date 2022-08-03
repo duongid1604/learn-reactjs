@@ -4,7 +4,6 @@ import React from "react";
 import TodoFeatures from "./features/todo";
 
 function App() {
-
   return (
     <div className="App">
       <TodoFeatures />
