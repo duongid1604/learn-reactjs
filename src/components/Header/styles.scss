@@ -1,0 +1,15 @@
+.header {
+  position: relative;
+  &__link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__close-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    color: #666;
+    cursor: pointer;
+  }
+}
