@@ -50,6 +50,7 @@ export default function Header() {
 
   const handleLogoutClick = () => {
     dispatch(logout());
+    handleCloseMenu();
   };
 
   return (
@@ -98,7 +99,6 @@ export default function Header() {
           <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
           <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
         </Menu>
-
         <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
           <CloseIcon className="header__close-btn" onClick={handleClose} />
           <DialogContent>
