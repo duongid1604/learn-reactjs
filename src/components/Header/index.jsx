@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
-import MasksIcon from "@mui/icons-material/Masks";
+import FaceIcon from '@mui/icons-material/Face';
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -58,11 +58,11 @@ export default function Header() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-            <MasksIcon sx={{ mr: 2 }} />
+            <FaceIcon sx={{ mr: 2 }} />
 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <Link className="header__link" to="/">
-                Mask Shop
+                Avacado Smoothie
               </Link>
             </Typography>
 
