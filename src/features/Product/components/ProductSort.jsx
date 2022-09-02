@@ -12,7 +12,7 @@ function ProductSort({ currentSort, onChange }) {
     if (onChange) onChange(newValue);
   };
 
-  return (  
+  return (
     <Tabs value={currentSort} onChange={handleSortChange}>
       <Tab label="Giá thấp đến cao" value="salePrice:ASC"></Tab>
       <Tab label="Giá cao đến thấp" value="salePrice:DESC"></Tab>

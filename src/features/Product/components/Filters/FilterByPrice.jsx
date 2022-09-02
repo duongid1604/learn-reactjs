@@ -7,10 +7,7 @@ FilterByPrice.propTypes = {
 };
 
 function FilterByPrice({ onChange }) {
-  const [values, setValues] = useState({
-    // salePrice_gte: 0,
-    // salePrice_lte: 0,
-  });
+  const [values, setValues] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,11 +20,18 @@ function FilterByPrice({ onChange }) {
 
   const handleSubmit = () => {
     if (onChange) onChange(values);
+
+    setValues({
+      salePrice_gte: 0,
+      salePrice_lte: 0,
+    });
   };
 
   return (
-    <Box sx={{ p: 2, borderTop:"1px solid #ccc" }}>
-      <Typography mb={1} mt={2} variant="subtitle2">CHỌN KHOẢNG GIÁ</Typography>
+    <Box sx={{ p: 2, borderTop: "1px solid #ccc" }}>
+      <Typography mb={1} mt={1} variant="subtitle2">
+        CHỌN KHOẢNG GIÁ
+      </Typography>
 
       <Box sx={{ display: "flex" }}>
         <Input
@@ -35,7 +39,7 @@ function FilterByPrice({ onChange }) {
           sx={{ mr: 1 }}
           size="small"
           name="salePrice_gte"
-          value={values.salePrice_gte}
+          value={values.salePrice_gte || ""}
           onChange={handleChange}
         />
         <span>-</span>
@@ -44,13 +48,13 @@ function FilterByPrice({ onChange }) {
           sx={{ ml: 1 }}
           size="small"
           name="salePrice_lte"
-          value={values.salePrice_lte}
+          value={values.salePrice_lte || ""}
           onChange={handleChange}
         />
       </Box>
 
       <Button
-        sx={{ mt: 1 }}
+        sx={{ mt: 1, mb: 1 }}
         variant="outlined"
         size="small"
         onClick={handleSubmit}
