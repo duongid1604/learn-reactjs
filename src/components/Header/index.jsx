@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
-import FaceIcon from '@mui/icons-material/Face';
+import FaceIcon from "@mui/icons-material/Face";
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,7 +14,7 @@ import Register from "features/Auth/components/Register";
 import { logout } from "features/Auth/userSlice";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const MODE = {
@@ -65,14 +65,6 @@ export default function Header() {
                 Avacado Smoothie
               </Link>
             </Typography>
-
-            <NavLink className="header__link" to="/todos">
-              <Button color="inherit">Todos</Button>
-            </NavLink>
-
-            <NavLink className="header__link" to="/albums">
-              <Button color="inherit">Albums</Button>
-            </NavLink>
 
             {!isLoggedIn && (
               <Button color="inherit" onClick={handleClickOpen}>
