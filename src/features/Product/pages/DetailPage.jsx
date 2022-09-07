@@ -1,4 +1,6 @@
 import { Box, Container, Grid, Paper, Skeleton } from "@mui/material";
+import { addToCart } from "features/Cart/cartSlice";
+import { useDispatch } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import AddToCartForm from "../components/AddToCartForm";
 import ProductDescription from "../components/ProductDescription";
@@ -14,6 +16,7 @@ function DetailPage() {
   } = useRouteMatch();
 
   const { product, loading } = useProductDetail(productID);
+  const dispatch = useDispatch();
 
   if (loading) {
     return (
@@ -23,8 +26,14 @@ function DetailPage() {
     );
   }
 
-  const handleAddToCartForm = (formValues) => {
-    console.log("Form submit", formValues);
+  const handleAddToCartForm = ({ quantity }) => {
+    dispatch(
+      addToCart({
+        id: product.id,
+        product,
+        quantity,
+      }) 
+    );
   };
 
   return (

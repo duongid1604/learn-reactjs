@@ -1,7 +1,8 @@
+import { ShoppingCart } from "@mui/icons-material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
 import FaceIcon from "@mui/icons-material/Face";
-import { IconButton, Menu, MenuItem } from "@mui/material";
+import { Badge, IconButton, Menu, MenuItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -12,9 +13,10 @@ import Typography from "@mui/material/Typography";
 import Login from "features/Auth/components/Login";
 import Register from "features/Auth/components/Register";
 import { logout } from "features/Auth/userSlice";
+import { cartItemsCountSelector } from "features/Cart/selector";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./styles.scss";
 
 const MODE = {
@@ -25,6 +27,8 @@ const MODE = {
 export default function Header() {
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
+  const cartItemsCount = useSelector(cartItemsCountSelector);
+  const history = useHistory();
   const isLoggedIn = !!loggedInUser.id;
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
@@ -53,6 +57,10 @@ export default function Header() {
     handleCloseMenu();
   };
 
+  const handleCartClick = () => {
+    history.push("/cart");
+  };
+
   return (
     <div className="header">
       <Box sx={{ flexGrow: 1 }}>
@@ -65,6 +73,17 @@ export default function Header() {
                 Avacado Smoothie
               </Link>
             </Typography>
+
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+              onClick={handleCartClick}
+            >
+              <Badge badgeContent={cartItemsCount} color="error">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
 
             {!isLoggedIn && (
               <Button color="inherit" onClick={handleClickOpen}>
